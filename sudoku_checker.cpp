@@ -85,9 +85,59 @@ bool check_row(int row,short v[SIZE][SIZE])
     }
     return true;
 }
+bool check_column(int column, short v[SIZE][SIZE]){
+    int aux[10]{0,0,0,0,0,0,0,0,0,0};
+
+    for( int row = 0; row<SIZE; ++row){
+        
+        if(v[row][column]== 0){
+            aux[0]+=1;
+        }else if(v[row][column] == 1){
+            aux[1]+=1;
+        }else if(v[row][column] == 2){
+            aux[2]+=1;
+        }else if(v[row][column] == 3){
+            aux[3]+=1;
+        }else if(v[row][column] == 4){
+            aux[4]+=1;
+        }else if(v[row][column] == 5){
+            aux[5]+=1;
+        }else if(v[row][column] == 6){
+            aux[6]+=1;
+        }else if(v[row][column] == 7){
+            aux[7]+=1;
+        }else if(v[row][column] == 8){
+            aux[8]+=1;
+        }else if(v[row][column] == 9){
+            aux[9]+=1;
+        }
+
+
+    }
+
+    for(int pos = 0; pos < SIZE; ++pos){
+        if(aux[pos] >1){
+            return false;
+        }
+    }
+    return true;
+}
 bool is_valid( short b[SIZE][SIZE] )
 {
     // TODO: implement this function.
+    //check line
+    for(int row = 0; row<SIZE; ++row){
+        if(check_row(row,b)==false){
+            return false;
+        }
+    }
+    //check column
+    for(int column = 0; column<SIZE; ++column){
+        if(check_column(column,b)==false){
+            return false;
+        }
+    }
+
     return true; // This is just a stub. Replace it as needed.
 }
 
@@ -188,7 +238,7 @@ int main(void)
         { 3, 5, 2, 8, 6, 4, 1, 7, 9 } };
 
     
-/*
+
     std::cout << "Board: \n";
     print( board1 );
     std::cout << "Is valid? " << std::boolalpha << is_valid( board1 ) << std::endl;
