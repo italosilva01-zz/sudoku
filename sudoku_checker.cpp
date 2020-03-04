@@ -39,7 +39,7 @@ void print( short b[SIZE][SIZE] )
    }
 }
 
-bool check_row(short v[SIZE])
+bool check_row(int row,short v[SIZE][SIZE])
 {
     //This function check the row of vector
     
@@ -48,27 +48,27 @@ bool check_row(short v[SIZE])
 
     for(int column = 0;column < SIZE; column++ ){
     //This 'for' moving on in the array line
-        if(v[column]== 0){
+        if(v[row][column]== 0){
             //checks the value in the vector and marks the auxiliary vector
             aux[0] += 1;
-        }else if(v[column]==1){
+        }else if(v[row][column]==1){
             aux[1] += 1;
-        }else if(v[column]==2){
+        }else if(v[row][column]==2){
             aux[2] += 1;
-        }else if(v[column]==3){
+        }else if(v[row][column]==3){
             aux[3] += 1;
-        }else if(v[column]==4){
+        }else if(v[row][column]==4){
             aux[4] += 1;
-        }else if(v[column]==5){
+        }else if(v[row][column]==5){
             aux[5] += 1;
-        }else if(v[column]==6){
+        }else if(v[row][column]==6){
             aux[6] += 1;
-        }else if(v[column]==7){
+        }else if(v[row][column]==7){
             aux[7] += 1;
-        }else if(v[column]==8){
+        }else if(v[row][column]==8){
             aux[8] += 1;
         }
-        else if(v[column]==9){
+        else if(v[row][column]==9){
             aux[9] += 1;
         }
 
@@ -79,8 +79,9 @@ bool check_row(short v[SIZE])
     
     for(int pos = 0; pos < SIZE; pos++){
         //check if any element is greater than 1
-        if(aux[pos]>1)
+        if(aux[pos]>1){
             return false;
+        }
     }
     return true;
 }
@@ -186,9 +187,7 @@ int main(void)
         { 9, 1, 5, 3, 7, 6, 2, 8, 4 },
         { 3, 5, 2, 8, 6, 4, 1, 7, 9 } };
 
-    short v[10]{0,1,2,3,4,5,6,7,8,9};
-    std::cout<<  check_row(v);
-
+    
 /*
     std::cout << "Board: \n";
     print( board1 );
