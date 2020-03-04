@@ -122,6 +122,13 @@ bool check_column(int column, short v[SIZE][SIZE]){
     }
     return true;
 }
+
+bool check_quadrant(short v[SIZE][SIZE]){
+
+    for(int row = 0; row< SIZE; row+=3){
+        std::cout << row;
+    }
+}
 bool is_valid( short b[SIZE][SIZE] )
 {
     // TODO: implement this function.
@@ -137,7 +144,7 @@ bool is_valid( short b[SIZE][SIZE] )
             return false;
         }
     }
-
+    check_quadrant(b);
     return true; // This is just a stub. Replace it as needed.
 }
 
