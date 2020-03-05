@@ -124,10 +124,46 @@ bool check_column(int column, short v[SIZE][SIZE]){
 }
 
 bool check_quadrant(short v[SIZE][SIZE]){
+    int aux[10]{0,0,0,0,0,0,0,0,0,0};
 
-    for(int row = 0; row< SIZE; row+=3){
-        std::cout << row;
+    for(int rowQuadrant = 0; rowQuadrant< SIZE; rowQuadrant+=3){
+        for(int columnQuadrant = 0; columnQuadrant < SIZE; columnQuadrant +=3){
+
+            for(int row = rowQuadrant; row<rowQuadrant+3; ++row){
+                for(int column = columnQuadrant; column < columnQuadrant+3; ++column){
+                    
+                    switch (v[row][column])
+                    {
+                    case 0: aux[0]+=1; break;
+                    case 1: aux[1]+=1;break;
+                    case 2: aux[2]+=1;break;
+                    case 3: aux[3]+=1;break;
+                    case 4: aux[4]+=1;break;
+                    case 5: aux[5]+=1;break;
+                    case 6: aux[6]+=1;break;
+                    case 7: aux[7]+=1;break;
+                    case 8: aux[8]+=1;break;
+                    case 9: aux[9]+=1;break;
+                    }
+
+                }
+                std::cout<<std::endl;
+            }
+
+            for(int pos = 0;pos<10;++pos){
+              
+                if(aux[pos]>1){
+                    return false;
+                }
+                
+            };
+            for(int pos = 0; pos < 10;++pos){
+                aux[pos]=0;
+            }
+            
+        }
     }
+    return true;
 }
 bool is_valid( short b[SIZE][SIZE] )
 {
@@ -144,7 +180,9 @@ bool is_valid( short b[SIZE][SIZE] )
             return false;
         }
     }
-    check_quadrant(b);
+   if(check_quadrant(b)!= true){
+       return false;
+   } 
     return true; // This is just a stub. Replace it as needed.
 }
 
